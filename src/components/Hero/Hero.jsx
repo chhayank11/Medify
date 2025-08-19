@@ -6,6 +6,7 @@ const Hero = () => {
   return (
     <Container
       sx={{
+        position: "relative",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -74,6 +75,24 @@ const Hero = () => {
       </Container>
       <Box>
         <Box component={"img"} src={logo} width={{ xs: 1, md: "100%" }} />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          top: "88%",
+          // left: "50%",
+          // transform: "translateX(-50%)",
+          height: "300px",
+          width: "92%",
+          backgroundColor: "white",
+          borderRadius: 4,
+          boxShadow: 3,
+          textAlign: "center",
+        }}
+      >
+        <Box>asd</Box>
+        <Box>asd</Box>
       </Box>
     </Container>
   );

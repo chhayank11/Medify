@@ -3,6 +3,7 @@ import { CssBaseline } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import DownloadApp from "./components/Sections/DownloadApp/DownloadApp";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <CssBaseline />
       <Outlet />
       <DownloadApp />
+      <Footer />
     </>
   );
 }
