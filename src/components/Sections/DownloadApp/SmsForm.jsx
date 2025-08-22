@@ -19,6 +19,8 @@ const SmsForm = () => {
           border: "1px solid #F0F0F0",
           flex: 1,
           backgroundColor: "white",
+          "& fieldset": { border: "none" },
+          borderRadius: "10px",
         }}
         placeholder="Enter phone number"
         InputProps={{

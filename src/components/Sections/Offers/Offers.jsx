@@ -13,7 +13,7 @@ import img2 from "../../../assets/offer2.jpg";
 
 export default function Offers() {
   return (
-    <Container sx={{ paddingTop: "30px" }}>
+    <Container sx={{ paddingTop: "220px" }}>
       <Container maxWidth="xl">
         <Swiper
           slidesPerView={1}

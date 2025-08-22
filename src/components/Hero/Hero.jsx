@@ -1,6 +1,12 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import logo from "../../assets/home.webp";
+import SearchHospital from "../SearchHospital/SearchHospital";
+import Ambulance from "../../assets2/Heroicons/Ambulance.png";
+import Doctors from "../../assets2/Heroicons/Doctors.png";
+import Hospitals from "../../assets2/Heroicons/Hospitals.png";
+import Labs from "../../assets2/Heroicons/Labs.png";
+import MedicalStore from "../../assets2/Heroicons/MedicalStore.png";
 
 const Hero = () => {
   return (
@@ -21,8 +27,8 @@ const Hero = () => {
         <Typography
           sx={{
             fontWeight: 500,
-            fontSize: "31px",
-            lineHeight: "68px",
+            fontSize: { md: "28px", xs: "20px" },
+            lineHeight: { md: "68px" },
             letterSpacing: "0.62px",
             color: "#102851",
           }}
@@ -33,7 +39,7 @@ const Hero = () => {
             sx={{
               fontWeight: 700,
               fontStyle: "normal",
-              fontSize: "56px",
+              fontSize: { md: "52px", xs: "31px" },
               lineHeight: "68px",
               letterSpacing: "1.12px",
               color: "#000000",
@@ -46,7 +52,7 @@ const Hero = () => {
             sx={{
               fontWeight: 700,
               fontStyle: "normal",
-              fontSize: "56px",
+              fontSize: { md: "52px", xs: "31px" },
               lineHeight: "68px",
               letterSpacing: "1.12px",
               color: "#2AA7FF",
@@ -56,12 +62,12 @@ const Hero = () => {
           </Typography>
         </Typography>
         <Typography
-          mb={2}
+          my={2}
           sx={{
             fontWeight: 400,
             fontStyle: "normal",
-            fontSize: "20px",
-            lineHeight: "32px",
+            fontSize: { md: "20px" },
+            lineHeight: { md: "32px", xs: "25px" },
             letterSpacing: "0.4px", // 2% of 20px
             color: "#5C6169",
           }}
@@ -69,30 +75,93 @@ const Hero = () => {
           Connect instantly with a 24x7 specialist or choose to video visit a
           particular doctor.{" "}
         </Typography>
-        <Button variant="contained" sx={{ backgroundColor: "#2AA8FF" }}>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: "#2AA8FF", borderRadius: "10px" }}
+        >
           Find Centers
         </Button>
       </Container>
       <Box>
-        <Box component={"img"} src={logo} width={{ xs: 1, md: "100%" }} />
+        <Box
+          component={"img"}
+          src={logo}
+          width={{ xs: 1, md: "100%" }}
+          px={2}
+          sx={{ mt: { md: 1, xs: 5 } }}
+        />
       </Box>
 
       <Box
         sx={{
           position: "absolute",
-          top: "88%",
-          // left: "50%",
-          // transform: "translateX(-50%)",
-          height: "300px",
-          width: "92%",
+          top: { md: "88%", xs: "95%" },
+          height: { md: "490px", xs: "700px" },
+          width: { md: "92%", xs: "83%" },
           backgroundColor: "white",
           borderRadius: 4,
-          boxShadow: 3,
+          boxShadow: "6px 6px 35px 0px #1028511C",
           textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+
+          p: { md: 2 },
         }}
       >
-        <Box>asd</Box>
-        <Box>asd</Box>
+        <SearchHospital />
+
+        <Box>
+          <Typography
+            component="h4"
+            fontSize={20}
+            color="#102851"
+            fontWeight={500}
+            textAlign="center"
+            my={3}
+          >
+            You may be looking for
+          </Typography>
+          <Box p={2}>
+            <Grid container>
+              <Grid size={{ md: 2.4, xs: 4 }} py={4}>
+                <Box component={"img"} src={Doctors} height={60} />
+                <Typography color={"#ABB6C7"} fontSize={18} fontWeight={400}>
+                  Doctors
+                </Typography>
+              </Grid>
+              <Grid size={{ md: 2.4, xs: 4 }} py={4}>
+                <Box component={"img"} src={Labs} height={60} />
+                <Typography color={"#ABB6C7"} fontSize={18} fontWeight={400}>
+                  Labs
+                </Typography>
+              </Grid>
+              <Grid
+                size={{ md: 2.4, xs: 4 }}
+                borderRadius={2}
+                bgcolor={"rgba(42,167,255,0.08)"}
+                sx={{ border: "1px solid #2AA7FF" }}
+                py={4}
+              >
+                <Box component={"img"} src={Hospitals} height={60} />
+                <Typography color={"#2AA7FF"} fontSize={18} fontWeight={600}>
+                  Hospitals
+                </Typography>
+              </Grid>
+              <Grid size={{ md: 2.4, xs: 4 }} py={4}>
+                <Box component={"img"} src={MedicalStore} height={60} />
+                <Typography color={"#ABB6C7"} fontSize={18} fontWeight={400}>
+                  Medical Store
+                </Typography>
+              </Grid>
+              <Grid size={{ md: 2.4, xs: 4 }} py={4}>
+                <Box component={"img"} src={Ambulance} height={60} />
+                <Typography color={"#ABB6C7"} fontSize={18} fontWeight={400}>
+                  Ambulance
+                </Typography>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
       </Box>
     </Container>
   );

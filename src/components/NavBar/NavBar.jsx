@@ -1,51 +1,96 @@
-import { Box, Button, Typography } from "@mui/material";
-import logo from "./../../assets/logo.jpg";
+import logo from "../../assets2/MedifyLogo/Medify.png";
 
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
+import {
+  Box,
+  Container,
+  Button,
+  List,
+  ListItem,
+  Stack,
+  Typography,
+  useMediaQuery,
+  IconButton,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
+import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import React from "react";
 
-const NavBar = () => {
-  const navItems = [
-    "Find Doctors",
-    "Hospitals",
-    "Medicines",
-    "Surgeries",
-    "Software for Provider",
-    "Facilities",
-    "My Bookings",
-  ];
+export default function NavBar() {
+  const isMobile = useMediaQuery("(max-width:900px)");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
-      <Box
-        sx={{
-          backgroundColor: "#2AA7FF",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "8px",
-        }}
-      >
-        <Typography color="white" fontSize={"14px"}>
+    <header>
+      <Box p={1} bgcolor="#2AA7FF">
+        <Typography fontSize={14} textAlign="center" color="#fff">
           The health and well-being of our patients and their health care team
           will always be our priority, so we follow the best practices for
           cleanliness.
         </Typography>
       </Box>
 
-      <Box mb={10}>
-        <img src={logo} alt="" />
-      </Box>
-    </>
-  );
-};
+      <Container maxWidth="xl">
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+          justifyContent="space-between"
+          py={2}
+          sx={{ px: { md: 8, xs: 2 } }}
+        >
+          <Link to="/">
+            <img src={logo} alt="Logo" height={27} />
+          </Link>
 
-export default NavBar;
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={4}
+            alignItems={{ xs: "flex-start", md: "center" }}
+            className={[styles.navlinks, menuOpen && styles.active]}
+            pt={{ xs: 12, md: 1 }}
+            pb={{ xs: 4, md: 1 }}
+            px={{ xs: 4, md: 0 }}
+          >
+            <Link>Find Doctors</Link>
+            <Link to="/search">Hospitals</Link>
+            <Link>Medicines</Link>
+            <Link>Surgeries</Link>
+            <Link>Software for Provider</Link>
+            <Link>Facilities</Link>
+            <Link to="/my-bookings">
+              <Button
+                variant="contained"
+                disableElevation
+                sx={{ backgroundColor: "#2AA7FF" }}
+              >
+                My Bookings
+              </Button>
+            </Link>
+
+            {isMobile && (
+              <IconButton
+                onClick={() => setMenuOpen(false)}
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 32,
+                  color: "#fff",
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            )}
+          </Stack>
+
+          {isMobile && (
+            <IconButton onClick={() => setMenuOpen(true)}>
+              <MenuIcon />
+            </IconButton>
+          )}
+        </Stack>
+      </Container>
+    </header>
+  );
+}

@@ -106,6 +106,7 @@ const DownloadApp = () => {
               gap: 2,
               flexDirection: { xs: "column", md: "row" },
             }}
+            pb={4}
           >
             {/* Google Play Button */}
             <Button

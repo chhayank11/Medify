@@ -19,7 +19,7 @@ const Home = () => {
           background:
             "linear-gradient(81deg,#e7f0ff 9.01%,rgba(232, 241, 255, 0.47) 89.11%)",
           width: "100%",
-          height: "800px",
+          height: { md: "850px", xs: "1200px" },
         }}
       >
         <NavBar />
