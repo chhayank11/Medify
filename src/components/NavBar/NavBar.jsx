@@ -59,7 +59,7 @@ export default function NavBar() {
             <Link>Surgeries</Link>
             <Link>Software for Provider</Link>
             <Link>Facilities</Link>
-            <Link to="/my-bookings">
+            <Link to="/mybookings">
               <Button
                 variant="contained"
                 disableElevation

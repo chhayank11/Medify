@@ -1,9 +1,10 @@
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Chip, Divider, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import medcenter from "../../assets2/MedicalCenter/MedicalCenter.png";
 import thumb from "../../assets2/MedicalCenter/Thumb.png";
 import Calendar from "../Calendar/Calendar";
 import BookingModal from "../BookingModal/BookingModal";
+import { format } from "date-fns";
 
 const availableSlots = {
   morning: ["11:30 AM"],
@@ -11,7 +12,15 @@ const availableSlots = {
   evening: ["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"],
 };
 
-const HospitalCard = ({ name, state, city, type, rating, details }) => {
+const HospitalCard = ({
+  name,
+  state,
+  city,
+  type,
+  rating,
+  details,
+  booking = false,
+}) => {
   const [clicked, setClicked] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingDetails, setBookingDetails] = useState({});
@@ -135,32 +144,55 @@ const HospitalCard = ({ name, state, city, type, rating, details }) => {
             </Typography>
           </Stack>
         </Box>
-        <Box
-          sx={{
-            pt: { md: 23, xs: 1 },
-            display: "flex",
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography
-            sx={{ color: "#01A400", fontSize: "14px", textAlign: "center" }}
-          >
-            Available Today
-          </Typography>
-          <Button
+        {booking ? (
+          <Stack direction="row" spacing={1} mt={{ xs: 2, md: 0 }}>
+            <Chip
+              label={details.bookingTime}
+              variant="outlined"
+              color="primary"
+              sx={{
+                borderRadius: 1,
+                fontSize: 14,
+              }}
+            />
+            <Chip
+              label={format(new Date(details.bookingDate), "dd MMMM yyyy")}
+              variant="outlined"
+              color="success"
+              sx={{
+                borderRadius: 1,
+                fontSize: 14,
+              }}
+            />
+          </Stack>
+        ) : (
+          <Box
             sx={{
-              textTransform: "none",
-              background: "#2AA7FF",
-              fontSize: "14px",
-              width: "100%",
+              pt: { md: 23, xs: 1 },
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
             }}
-            variant="contained"
-            onClick={() => setClicked(!clicked)}
           >
-            {clicked ? "Hide Booking Calendar" : "Book FREE Center Visit"}
-          </Button>
-        </Box>
+            <Typography
+              sx={{ color: "#01A400", fontSize: "14px", textAlign: "center" }}
+            >
+              Available Today
+            </Typography>
+            <Button
+              sx={{
+                textTransform: "none",
+                background: "#2AA7FF",
+                fontSize: "14px",
+                width: "100%",
+              }}
+              variant="contained"
+              onClick={() => setClicked(!clicked)}
+            >
+              {clicked ? "Hide Booking Calendar" : "Book FREE Center Visit"}
+            </Button>
+          </Box>
+        )}
       </Box>
       {clicked && (
         <Box

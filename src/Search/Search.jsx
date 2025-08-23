@@ -44,7 +44,7 @@ const Search = () => {
         sx={{
           background:
             "linear-gradient(81deg, #EFF5FE 9.01%, rgba(241, 247, 255, 0.47) 89.11%)",
-          minHeight: "1000px",
+          minHeight: "500px",
           height: "auto",
         }}
       >
@@ -86,7 +86,9 @@ const Search = () => {
           pt={{ md: "200px", xs: "120px" }}
           px={{ md: "110px", xs: "20px" }}
         >
-          {loading ? (
+          {!state || !city ? (
+            <></>
+          ) : loading ? (
             <h2>Loading...</h2>
           ) : (
             <Box>
@@ -118,19 +120,32 @@ const Search = () => {
             px={{ md: "90px", xs: "8px" }}
           >
             <Box flex={"67%"}>
-              <Box>
-                {medicalCenters.map((item, idx) => (
-                  <HospitalCard
-                    key={idx}
-                    name={item["Hospital Name"]}
-                    state={state}
-                    city={city}
-                    type={item["Hospital Type"]}
-                    rating={item["Hospital overall rating"]}
-                    details={item}
-                  />
-                ))}
-              </Box>
+              {!state || !city ? (
+                <Box>
+                  <Typography
+                    variant="h5"
+                    sx={{ background: "white", borderRadius: 3 }}
+                    p={3}
+                    m={2}
+                  >
+                    Please select a state and city
+                  </Typography>
+                </Box>
+              ) : (
+                <Box>
+                  {medicalCenters.map((item, idx) => (
+                    <HospitalCard
+                      key={idx}
+                      name={item["Hospital Name"]}
+                      state={state}
+                      city={city}
+                      type={item["Hospital Type"]}
+                      rating={item["Hospital overall rating"]}
+                      details={item}
+                    />
+                  ))}
+                </Box>
+              )}
             </Box>
             <Box flex={"33%"}>
               <Box
