@@ -7,8 +7,10 @@ import Doctors from "../../assets2/Heroicons/Doctors.png";
 import Hospitals from "../../assets2/Heroicons/Hospitals.png";
 import Labs from "../../assets2/Heroicons/Labs.png";
 import MedicalStore from "../../assets2/Heroicons/MedicalStore.png";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <Container
       sx={{
@@ -78,6 +80,7 @@ const Hero = () => {
         <Button
           variant="contained"
           sx={{ backgroundColor: "#2AA8FF", borderRadius: "10px" }}
+          onClick={() => navigate("/search")}
         >
           Find Centers
         </Button>
