@@ -59,7 +59,7 @@ const HospitalCard = ({
           }}
         >
           <Typography
-            component={"h1"}
+            component={"h3"}
             sx={{
               fontFamily: "Poppins, sans-serif",
               fontWeight: 600, // SemiBold = 600

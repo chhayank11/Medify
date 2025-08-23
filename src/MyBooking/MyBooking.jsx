@@ -47,6 +47,7 @@ const MyBooking = () => {
           }}
         >
           <Typography
+            component={"h1"}
             sx={{
               fontFamily: "Ubuntu",
               fontWeight: 700,
