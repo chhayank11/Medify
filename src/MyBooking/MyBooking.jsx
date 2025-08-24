@@ -13,7 +13,7 @@ import HospitalCard from "../components/HospitalCard/HospitalCard";
 
 const MyBooking = () => {
   const [searchText, setSearchText] = useState("");
-  const medicalCenters = JSON.parse(localStorage.getItem("bookings")) || null;
+  const medicalCenters = JSON.parse(localStorage.getItem("bookings")) || [];
   let [filteredList, setFilteredList] = useState([...medicalCenters]);
 
   const handleSearch = () => {
